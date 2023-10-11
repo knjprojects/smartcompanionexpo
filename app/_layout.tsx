@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
-
+import Providers from '../components/Providers';
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -39,18 +39,18 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return <Providers><RootLayoutNav /></Providers>;
 }
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+   
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+       
       </Stack>
-    </ThemeProvider>
+   
   );
 }
